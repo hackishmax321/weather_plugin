@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--=================================================[FontAwesome Icons]=============================================================-->
+	    <link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+      <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+
+      <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
+
+
+      <link rel="stylesheet" href="vendor/bootstrap/css/sbc-custom.css">
+
+      <link href="vendor/bootstrap/css/sb-weather.css" rel="stylesheet">
+
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-firestore.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase-storage.js"></script>      
+      <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+
+      <!-- Scroll Reveal -->
+      <!--=======================================================[JQuery]===================================================================-->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+      <!--===================================================[Scroll Reveal]===============================================================-->
+      <script src="vendor/scrollreveal-master/dist/scrollreveal.min.js"></script>
+
+      <style>
+
+        
+
+
+      </style>
+
+        <!--=======================================================[JQuery]===================================================================-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+        <!--===================================================[Scroll Reveal]================================================================-->
+        <script src="./vendor/scrollreveal-master/dist/scrollreveal.min.js"></script>
+    </head>
+    <body onload="getLocationGraph(6.5854, 79.9607)">
+      <div style="background-color: rgb(15, 5, 105)" id="up">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>                        
+                </button>
+                <a class="navbar-brand" href="#">WEPredict</a>
+              </div>
+              <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                  <li class="active"><a href="#">Home</a></li>
+                  <li><a href="#about">About Us</a></li>
+                  <li><a href="#contact">Contact Us</a></li>
+                  <li><a href="register.html">Sign Up</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+            
+          <div class="container-fluid text-center"> 
+               
+            <div class="row content dark-back">
+              <div class="col-sm-2 sidenav">
+                <p class="p-default">Join Us in Social Media Sites.</p>
+                <div class="social">
+                  <p><a href="#"><i class="fab fa-facebook"></i></a></p>
+                  <p><a href="#"><i class="fab fa-twitter-square"></i></a></p>
+                  <p><a href="#"><i class="fab fa-instagram"></i></a></p>
+                  <p><a href="#"><i class="fab fa-reddit"></i></a></p>
+                  <p><a href="#"><i class="fab fa-google-plus-square"></i></a></p>
+                </div>
+                
+              </div>
+              <div class="col-sm-8 text-left dark-back">
+
+                <div class="im-display" style="background-color: tomato; background: url('images/wallpaper/wallweat.jpg'); background-repeat: no-repeat; background-attachment: fixed;"></div>
+                <!-- Weather Plugin -->
+
+                <div >
+                  <div class="forecast-container">
+                    <div class="today forecast">
+                      <div class="forecast-header">
+                        <div class="day">Weekly Brief</div>
+                        <div class="date"><i class="far fa-calendar-minus" style="color: rgb(9, 230, 230); margin: 0 5px 0 10px;"></i><span id="currentDate">6 Oct</span></div>
+                      </div> 
+                      <div class="forecast-content">
+                        <div class="location" id="location">Colombo</div>
+                        <div class="degree">
+                          <div class="num temp">23<sup>o</sup>C</div>
+                          <div class="forecast-icon icon" style="width: 50px; margin-bottom: 52px;">
+                            <img src="images/icon/source/unknown.png" alt="" width=90>
+                          </div>	
+                        </div>
+                        <span><i class="fas fa-clock" style="color: rgb(9, 230, 230); margin: 0 5px 0 10px;"></i><span class="notification">24hrs</span></span>
+                        <span><i class="fas fa-wind" style="color: rgb(9, 230, 230); margin: 0 5px 0 10px;"></i><span id="wind">18km/h</span></span>
+                        <span><i class="fas fa-smog" style="color: rgb(9, 230, 230); margin: 0 5px 0 10px;"></i><span id="desc"></span></span>
+                      </div>
+                    </div>
+                    <div class="forecast">
+                      <div class="forecast-header">
+                        <div class="day" id="loc1">Kalutara</div>
+                      </div> 
+                      <div class="forecast-content">
+                        <div class="forecast-icon" id="icon1">
+                          <img src="images/icons/icon-3.svg" alt="" width=48>
+                        </div>
+                        <div class="degree" id="temp1">23<sup>o</sup>C</div>
+                        <small>18<sup>o</sup></small>
+                      </div>
+                    </div>
+                    <div class="forecast">
+                      <div class="forecast-header">
+                        <div class="day" id="loc2">Gampaha</div>
+                      </div> 
+                      <div class="forecast-content">
+                        <div class="forecast-icon" id="icon2">
+                          <img src="images/icons/icon-5.svg" alt="" width=48>
+                        </div>
+                        <div class="degree" id="temp2">23<sup>o</sup>C</div>
+                        <small>18<sup>o</sup></small>
+                      </div>
+                    </div>
+                    <div class="forecast">
+                      <div class="forecast-header">
+                        <div class="day" id="loc3">Galle</div>
+                      </div> 
+                      <div class="forecast-content">
+                        <div class="forecast-icon" id="icon3">
+                          <img src="images/icons/icon-7.svg" alt="" width=48>
+                        </div>
+                        <div class="degree" id="temp3">23<sup>o</sup>C</div>
+                        <small>18<sup>o</sup></small>
+                      </div>
+                    </div>
+                    <div class="forecast">
+                      <div class="forecast-header">
+                        <div class="day" id="loc4">Kandy</div>
+                      </div> 
+                      <div class="forecast-content">
+                        <div class="forecast-icon" id="icon4">
+                          <img src="images/icons/icon-12.svg" alt="" width=48>
+                        </div>
+                        <div class="degree" id="temp4">23<sup>o</sup>C</div>
+                        <small>18<sup>o</sup></small>
+                      </div>
+                    </div>
+                    <div class="forecast">
+                      <div class="forecast-header">
+                        <div class="day" id="loc5">Trincomalee</div>
+                      </div> 
+                      <div class="forecast-content">
+                        <div class="forecast-icon" id="icon5">
+                          <img src="images/icons/icon-13.svg" alt="" width=48>
+                        </div>
+                        <div class="degree" id="temp5">23<sup>o</sup>C</div>
+                        <small>18<sup>o</sup></small>
+                      </div>
+                    </div>
+                    <div class="forecast">
+                      <div class="forecast-header">
+                        <div class="day" id="loc6">Jaffna</div>
+                      </div> 
+                      <div class="forecast-content">
+                        <div class="forecast-icon" id="icon6">
+                          <img src="images/icons/icon-14.svg" alt="" width=48>
+                        </div>
+                        <div class="degree" id="temp6">23<sup>o</sup>C</div>
+                        <small>18<sup>o</sup></small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <h1 class="h-default">Join Us and keep ALARMED!</h1>
+                <p class="p-default">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <div class="clip">
+                  <i class="fas fa-umbrella"></i>
+                </div>
+                <div class="btn-contain">
+                  <center>
+                    <a class="btn-custom" href="register.html">Join Us</a>
+                    <a class="btn-custom" href="#foot">View</a><br>
+
+                  </center>
+                </div>
+                
+                
+              </div>
+              <div class="col-sm-2 sidenav">
+                <div class="well">
+                  <p>ADS</p>
+                </div>
+                <div class="well">
+                  <p>ADS</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="container-fluid text-center" style="height: 100vh;" id="about">    
+            <div class="row content dd-back">
+              <div class="col-sm-2 sidenav" style="background-color: tomato; background: url('images/wallpaper/weather1.png');  background-attachment: fixed; height: 100vh;"></div>
+              <div class="col-sm-8">
+                <div class="im-display" style="background: url('images/wallpaper/weather.jpg'); background-attachment: fixed;"></div>
+                <h1 class="h-default">About Us</h1>
+                <p class="p-default">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <p class="p-default">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo saepe assumenda dolorem modi, expedita voluptatum ducimus necessitatibus. Asperiores quod reprehenderit necessitatibus harum, mollitia, odit et consequatur maxime nisi amet doloremque.</p>
+                
+              </div>
+              <div class="col-sm-2 sidenav" style="background-color: tomato; background: url('images/wallpaper/weather2.jpg');  background-attachment: fixed; height: 100vh;"></div>
+            </div>
+          </div>
+
+          <div class="container-fluid text-center" id="contact">    
+            <div class="row content dark-back">
+              <div class="col-sm-2 sidenav"></div>
+              <div class="col-sm-8">
+                
+                <h1 class="h-default">Contact Us</h1>
+                <p class="p-default">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <form action="#" class="contact-form">
+                  <div class="row">
+                    <div class="col-md-6"><input type="text" id="name" placeholder="Your name..."></div>
+                    <div class="col-md-6"><input type="text" id="email" placeholder="Email Addresss..."></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6"><input type="text" id="com" placeholder="Company name..."></div>
+                    <div class="col-md-6"><input type="text" id="website" placeholder="Website..."></div>
+                  </div>
+                  <textarea name="" placeholder="Message..." id="message"></textarea>
+                  <div class="text-right">
+                    <div class="btn-contain">
+                      <center>
+                        <a class="btn-custom" id="contact" >Send</a>
+                        
+                      </center>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="col-sm-2 sidenav" ></div>
+            </div>
+          </div>
+        </div>
+        
+        
+        
+<!--footer starts from here-->
+<footer class="footer" id="foot">
+  <div class="container bottom_border">
+  <div class="row">
+  <div class=" col-sm-4 col-md col-sm-4  col-12 col">
+  <h5 class="headin5_amrc col_white_amrc pt2">Find us</h5>
+  <!--headin5_amrc--> 
+  
+  </div>
+  
+  </div>
+  </div>
+  
+  
+  <div class="container">
+  <ul class="foote_bottom_ul_amrc">
+  <li><a href="#up">Home</a></li>
+  <li><a href="#about">About</a></li>
+  <!-- <li><a href="http://webenlance.com">Contact</a></li>
+  <li><a href="http://webenlance.com">Pricing</a></li>
+  <li><a href="http://webenlance.com">Blog</a></li> -->
+  <li><a href="#contact">Contact</a></li>
+  </ul>
+  <!--foote_bottom_ul_amrc ends here-->
+  <p class="text-center">Copyright @2020 | Designed With by <a href="#">name</a></p>
+  
+  <ul class="social_footer_ul">
+  <li><a href="http://webenlance.com"><i class="fab fa-facebook-f"></i></a></li>
+  <li><a href="http://webenlance.com"><i class="fab fa-twitter"></i></a></li>
+  <li><a href="http://webenlance.com"><i class="fab fa-linkedin"></i></a></li>
+  <li><a href="http://webenlance.com"><i class="fab fa-instagram"></i></a></li>
+  </ul>
+  <!--social_footer_ul ends here-->
+  </div>
+  
+  </footer>
+
+  <!-- Weather API Settings -->
+  <script src="js/openweatherAPI/script.js"></script>
+
+  <script src="js/firebase/user_crud.js"></script>
+  
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+        <script>
+            // initFirestore();
+            userContact();
+
+            window.sr = ScrollReveal();
+            sr.reveal('.social', {duration: 1000});
+            sr.reveal('.forecast', {duration: 1000});
+            sr.reveal('.degree', {duration: 1000});
+            sr.reveal('.row', {duration: 1000});
+            sr.reveal('.container-fluid', {duration: 1000});
+        </script>
+        
+        
+    </body>
+</html>
